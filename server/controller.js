@@ -198,6 +198,23 @@ exports.addItems = (req, res) => {
     });
 };
 
+
+//EDIT ITEMS BUTTON
+exports.editItems = (req, res) => {
+  var itemID = req.body.item_id;
+
+  Item.update({message: req.body.message}, { where: { id: req.body.commentId }})
+    .then((result) => {
+      console.log('Done updating. Result: ', result);
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log('Error updating comment: ', err);
+      res.sendStatus(500);
+    });
+}
+
+
 exports.deleteItems = (req, res) => {
   var itemID = req.body.item_id;
   console.log('deleteItems controller req.body.item_id:', itemID);

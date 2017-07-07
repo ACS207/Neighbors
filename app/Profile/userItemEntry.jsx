@@ -10,8 +10,8 @@ import { withRouter } from 'react-router';
 import ReviewSplash from './reviewSplash.jsx';
 import axios from 'axios';
 import DeleteItemButton from './deleteItemButton.jsx';
-
-const React = require('react');
+import EditItemButton from './editItemButton.jsx'
+import React from 'react';
 
 class UserItemEntry extends React.Component {
   constructor(props) {
@@ -87,6 +87,13 @@ class UserItemEntry extends React.Component {
           fetchUserItems={this.props.fetchUserItems}
           ownerId={this.props.ownerId}
         />
+        
+        
+        <EditItemButton
+          itemID={this.props.itemId}
+        />
+
+
         <div className="col-md-6">
           <h4 className="title">{this.props.title}</h4>
           <p className="summary">{this.props.description}</p>

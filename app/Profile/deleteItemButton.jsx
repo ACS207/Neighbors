@@ -23,8 +23,7 @@ class DeleteItemButton extends React.Component {
   }
 
   deleteItem() {   
-    console.log('deleteItem fired');
-    // console.log('this.props.itemID:', this.props.itemID);    
+    // console.log('deleteItem fired');
     
     const info = {
       item_id: this.state.item_id

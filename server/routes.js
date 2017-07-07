@@ -29,6 +29,9 @@ module.exports = (app) => {
   app.get('/api/borrowedItems/:userId', controller.checkAuth, controller.getBorrowedItems);
   app.post('/api/items', controller.checkAuth, controller.addItems);
   app.delete('/api/items', controller.checkAuth, controller.deleteItems);
+  
+  app.put('/api/items', controller.checkAuth, controller.editItems);
+
   app.put('/api/items/:id', controller.checkAuth, controller.returnItem);
   app.put('/api/ratings', controller.updateRating);
   app.post('/api/updateUser', controller.updateUser);
