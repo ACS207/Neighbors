@@ -6,9 +6,7 @@ class EditItemButton extends React.Component {
     super(props)
     
     this.state = {
-      item_id: null,
-      isEditing: false
-
+      item_id: null
     }
   }
 
@@ -18,24 +16,31 @@ class EditItemButton extends React.Component {
     })
   }
 
-  editItem() {   
-    console.log('editItem fired');
-    console.log('editItem this.state.item_id:', this.state.item_id);
+  retrieveItemInfo(item_id) {
+    console.log('retrieveItemInfo fired');
 
     const info = {
-      item_id: this.state.item_id,  
+      item_id: this.state.item_id,
     };
-    
 
     fetch('/api/items', {
-      method: 'PUT',
+      method: 'GET',
       headers: {
         'Content-type': 'application/json'
       },
       credentials: 'same-origin',
-      body: JSON.stringify(info),
+      body: JSON.stringify(info)
     })
-    //  .then(() => this.props.fetchUserItems(this.props.ownerId));
+    .then
+  }
+
+  updateItemInfo() {
+    console.log('updateItem fired');
+  }
+
+  editItem() {
+    this.retrieveItemInfo();
+    this.updateItemInfo();
   }
   
   render() {

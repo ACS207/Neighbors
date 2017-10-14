@@ -199,8 +199,24 @@ exports.addItems = (req, res) => {
 };
 
 
-//EDIT ITEMS BUTTON
-exports.editItems = (req, res) => {
+//-----
+// EDIT ITEM BUTTON
+//-----
+exports.getItemInfo = (req, res) => {
+  let itemID = req.params.id;
+  console.log('getItemInfo controller where query is: ', itemID);
+
+  Item.findById(itemId)
+    .then((itemInfo) => {
+      console.log('successfully got item info', result);
+      res.send(itemInfo);
+    })
+    .catch((err) => {
+      res.status(500).send('Error getting item info', err);
+    });
+};
+
+exports.updateItemInfo = (req, res) => {
   var itemID = req.body.item_id;
 
   Item.update({message: req.body.message}, { where: { id: req.body.commentId }})
@@ -212,8 +228,7 @@ exports.editItems = (req, res) => {
       console.log('Error updating comment: ', err);
       res.sendStatus(500);
     });
-}
-
+};
 
 exports.deleteItems = (req, res) => {
   var itemID = req.body.item_id;

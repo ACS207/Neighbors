@@ -8,22 +8,28 @@
 
 const React = require('react');
 import axios from 'axios';
+import EditItemButton from './editItemButton.jsx';
 
 class AddStuff extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       image: null,
       title: null,
       description: null,
+      isEditing: false
     };
+    
     this.clearField = () => {
       this.image.value = '';
       this.title.value = '';
       this.description.value = '';
     };
+    
     this.addItem = (e) => {
       e.preventDefault();
+      
       const info = {
         image: this.image.value,
         title: this.title.value,
@@ -51,6 +57,7 @@ class AddStuff extends React.Component {
         .then(() => this.clearField());
     };
   }
+
   render() {
     return (
       <div className="sub-component">
@@ -86,6 +93,7 @@ class AddStuff extends React.Component {
             />
           }
           <button type="submit" className="btn btn-warning btn-md">Add Item</button>
+          <button type="submit" className="btn btn-warning btn-md">Save Changes</button>
         </form>
       </div>
     );

@@ -16,13 +16,16 @@ import React from 'react';
 class UserItemEntry extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = { showReviewSplash: false };
+    
     this.changeRoute = () => {
       this.props.history.push(`/profile/${this.props.borrowerId}/`);
       this.props.populateProfile(this.props.borrowerId);
       this.props.fetchUserItems();
       this.props.fetchBorrowedItems();
     };
+    
     this.returnItem = this.returnItem.bind(this);
     this.toggleReviewSplash = this.toggleReviewSplash.bind(this);
     this.handleRatingClick = this.handleRatingClick.bind(this);

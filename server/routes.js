@@ -30,7 +30,9 @@ module.exports = (app) => {
   app.post('/api/items', controller.checkAuth, controller.addItems);
   app.delete('/api/items', controller.checkAuth, controller.deleteItems);
   
-  app.put('/api/items', controller.checkAuth, controller.editItems);
+
+  app.get('/api/items', controller.checkAuth, controller.getItemInfo);
+  app.put('/api/items', controller.checkAuth, controller.updateItemInfo);
 
   app.put('/api/items/:id', controller.checkAuth, controller.returnItem);
   app.put('/api/ratings', controller.updateRating);

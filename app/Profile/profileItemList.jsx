@@ -17,10 +17,12 @@ import axios from 'axios';
 class ProfileItemList extends React.Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       userItems: null,
       borrowedItems: null,
     };
+    
     this.fetchUserItems = this.fetchUserItems.bind(this);
   }
 
@@ -66,6 +68,7 @@ class ProfileItemList extends React.Component {
     //     userItems: json,
     //   }));
   }
+  
   fetchBorrowedItems(route) {
     console.log('Entering fetchBorrowedItems with route: ', route);
     const url = `/api/borrowedItems/${route}`;
@@ -83,9 +86,31 @@ class ProfileItemList extends React.Component {
         });
       });
   }
-  deleteItemFromList(item_id) {
-    
+
+  retrieveItemInfo(item_id) {
+    console.log('retrieveItemInfo fired');
+
+    const info = {
+      item_id: this.state.item_id,
+    };
+
+    fetch('/api/items', {
+      method: 'GET',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      credentials: 'same-origin',
+      body: JSON.stringify(info)
+    })
+    .then((itemInfo) => {
+      let itemData = itemInfo;
+    });
   }
+
+  updateItemInfo() {
+    console.log('updateItem fired');
+  }
+
   
   render() {
     return (
